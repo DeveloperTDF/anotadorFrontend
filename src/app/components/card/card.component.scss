@@ -1,0 +1,18 @@
+.justificado {
+    text-align: justify;
+  }
+.card{
+    background-color: rgba(231, 233, 236, 0.616);
+}
+.spaced-label {
+  display: flex;
+  justify-content: space-around; /* Distribuye el espacio de manera uniforme entre los elementos */
+  align-items: center; /* Alinea los elementos verticalmente en el centro */
+}
+
+.label-item {
+  margin: 0 10px; /* Ajusta el espacio horizontal entre los elementos */
+}
+.subtitle{
+  margin-left: 18px;
+}
