@@ -1,13 +1,59 @@
 <app-header titulo="AGREGAR NOTA"></app-header>
 
+<ion-content [fullscreen]="true" class="ion-padding">
+  <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+    <ion-item>
+      <ion-label position="stacked"
+        >fecha <ion-text color="danger">*</ion-text></ion-label
+      >
+      <ion-input required formControlName="fecha" type="date"></ion-input>
+    </ion-item>
 
+    <ion-item>
+      <ion-label position="floating"
+        >nombre <ion-text color="danger">*</ion-text></ion-label
+      >
+      <ion-input required formControlName="nombre" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating"
+        >temario <ion-text color="danger">*</ion-text></ion-label
+      >
+      <ion-input required formControlName="temario" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating"
+        >titulo <ion-text color="danger">*</ion-text></ion-label
+      >
+      <ion-input required formControlName="titulo" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating"
+        >apunte <ion-text color="danger">*</ion-text></ion-label
+      >
+      <ion-textarea formControlName="apunte" autoGrow="true"></ion-textarea>
+      <!-- <ion-input
+       
+        label-placement="floating"
+        fill="solid"
+       
+        required
+        formControlName="apunte"
+        type="text"
+      ></ion-input> -->
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
+     
+    </ion-item>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+    <ion-button
+      expand="block"
+      color="primary"
+      type="submit"
+      [disabled]="formulario.invalid"
+    >
+      Ingresar
+    </ion-button>
+
+    <!-- <ion-label>formulario valido: {{formulario.valid}}</ion-label> -->
+  </form>
 </ion-content>
