@@ -1,11 +1,13 @@
 <app-header titulo="LISTADO"></app-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+  <ion-card *ngFor="let l of lista">
+    <ion-card-content>
+      FECHA: {{l.fecha}} <br />
+      NOMBRE: {{l.nombre}} <br />
+      TEMARIO: {{l.temario}} <br />
+      TITULO: {{l.titulo}} <br />
+      APUNTE: {{l.apunte}}
+    </ion-card-content>
+  </ion-card>
 </ion-content>
