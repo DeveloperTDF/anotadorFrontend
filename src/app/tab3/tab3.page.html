@@ -1,7 +1,9 @@
 <app-header titulo="LISTADO"></app-header>
 
+
 <ion-content [fullscreen]="true">
-  <ion-card *ngFor="let l of lista">
+  <ion-searchbar [debounce]="1000" (ionInput)="handleInput($event)"></ion-searchbar>
+  <ion-card *ngFor="let l of results">
     <ion-card-content>
       FECHA: {{l.fecha}} <br />
       NOMBRE: {{l.nombre}} <br />

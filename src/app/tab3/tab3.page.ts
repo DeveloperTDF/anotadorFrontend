@@ -57,6 +57,23 @@ export class Tab3Page {
     }
   ];
 
-  constructor() {}
+  public results = [...this.lista];
+
+  handleInput(event: any) {
+    const query = (event.detail.value || '').toLowerCase();
+  
+    // Filtrar la lista en base a las propiedades 'nombre', 'temario', 'titulo' o 'apunte'
+    this.results = this.lista.filter((nota) =>
+      nota.nombre.toLowerCase().includes(query) ||
+      nota.temario.toLowerCase().includes(query) ||
+      nota.titulo.toLowerCase().includes(query) ||
+      nota.apunte.toLowerCase().includes(query)
+    );
+  }
+  
+  // handleInput(event:any) {
+  //   const query = event.target.value.toLowerCase();
+  //   this.results = this.lista.filter((d) => d.toLowerCase().indexOf(query) > -1);
+  // }
 
 }
