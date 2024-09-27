@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ConexionService } from '../conexion.service';
 
 interface Nota {
 
@@ -15,62 +16,74 @@ interface Nota {
 })
 
 
+export class Tab3Page implements OnInit {
 
+  constructor(private notaservice:ConexionService){}
 
-export class Tab3Page {
+  lista:any[]=[];
 
-   lista: Nota[] = [
-    {
-      fecha: '2022-01-01',
-      nombre: 'Matemáticas',
-      temario: 'Álgebra',
-      titulo: 'Ecuaciones lineales',
-      apunte: 'Notas sobre ecuaciones lineales'
-    },
-    {
-      fecha: '2022-01-15',
-      nombre: 'Física',
-      temario: 'Mecánica',
-      titulo: 'Movimiento rectilíneo',
-      apunte: 'Notas sobre movimiento rectilíneo'
-    },
-    {
-      fecha: '2022-02-01',
-      nombre: 'Programación',
-      temario: 'TypeScript',
-      titulo: 'Interfaces y tipos',
-      apunte: 'Notas sobre interfaces y tipos en TypeScript'
-    },
-    {
-      fecha: '2022-03-01',
-      nombre: 'Química',
-      temario: 'Química orgánica',
-      titulo: 'Reacciones químicas',
-      apunte: 'Notas sobre reacciones químicas'
-    },
-    {
-      fecha: '2022-04-01',
-      nombre: 'Biología',
-      temario: 'Biología celular',
-      titulo: 'Estructura celular',
-      apunte: 'Notas sobre estructura celular'
-    }
-  ];
-
-  public results = [...this.lista];
-
-  handleInput(event: any) {
-    const query = (event.detail.value || '').toLowerCase();
-  
-    // Filtrar la lista en base a las propiedades 'nombre', 'temario', 'titulo' o 'apunte'
-    this.results = this.lista.filter((nota) =>
-      nota.nombre.toLowerCase().includes(query) ||
-      nota.temario.toLowerCase().includes(query) ||
-      nota.titulo.toLowerCase().includes(query) ||
-      nota.apunte.toLowerCase().includes(query)
-    );
+  ngOnInit(): void {
+    this.notaservice.getNota().subscribe(lista=>this.lista=lista);
   }
   
+
+
+  //  lista: Nota[] = [
+  //   {
+  //     fecha: '2022-01-01',
+  //     nombre: 'Matemáticas',
+  //     temario: 'Álgebra',
+  //     titulo: 'Ecuaciones lineales',
+  //     apunte: 'Notas sobre ecuaciones lineales'
+  //   },
+  //   {
+  //     fecha: '2022-01-15',
+  //     nombre: 'Física',
+  //     temario: 'Mecánica',
+  //     titulo: 'Movimiento rectilíneo',
+  //     apunte: 'Notas sobre movimiento rectilíneo'
+  //   },
+  //   {
+  //     fecha: '2022-02-01',
+  //     nombre: 'Programación',
+  //     temario: 'TypeScript',
+  //     titulo: 'Interfaces y tipos',
+  //     apunte: 'Notas sobre interfaces y tipos en TypeScript'
+  //   },
+  //   {
+  //     fecha: '2022-03-01',
+  //     nombre: 'Química',
+  //     temario: 'Química orgánica',
+  //     titulo: 'Reacciones químicas',
+  //     apunte: 'Notas sobre reacciones químicas'
+  //   },
+  //   {
+  //     fecha: '2022-04-01',
+  //     nombre: 'Biología',
+  //     temario: 'Biología celular',
+  //     titulo: 'Estructura celular',
+  //     apunte: 'Notas sobre estructura celular'
+  //   }
+  // ];
+
+  // desde aca --------------------------------------------------
+  // public results = [...this.lista];
+
+  // handleInput(event: any) {
+  //   const query = (event.detail.value || '').toLowerCase();
+  
+    // Filtrar la lista en base a las propiedades 'nombre', 'temario', 'titulo' o 'apunte'
+  //   this.results = this.lista.filter((nota) =>
+  //     nota.nombre.toLowerCase().includes(query) ||
+  //     nota.temario.toLowerCase().includes(query) ||
+  //     nota.titulo.toLowerCase().includes(query) ||
+  //     nota.apunte.toLowerCase().includes(query)
+  //   );
+  // }
+  // hasta aca era el buscador---------------------------------------------------
+
+
+  //esto no estaba activo era lo que copie de la pagina ionic
   // handleInput(event:any) {
   //   const query = event.target.value.toLowerCase();
   //   this.results = this.lista.filter((d) => d.toLowerCase().indexOf(query) > -1);
